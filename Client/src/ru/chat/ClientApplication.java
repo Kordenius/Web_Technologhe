@@ -9,14 +9,12 @@ public class ClientApplication {
     private static final String SERVER_HOST = "localhost";
     private static final int SERVER_PORT = 8081;
 
-    private static Socket socket;
     private static BufferedReader input;
     private static BufferedWriter output;
-    private static Scanner scanner;
 
     public static void main(String[] args) {
         try {
-            socket = new Socket(SERVER_HOST, SERVER_PORT);
+            Socket socket = new Socket(SERVER_HOST, SERVER_PORT);
             System.out.println("Соеденение с сервером установлено");
 
             try {
@@ -25,7 +23,7 @@ public class ClientApplication {
 
                 while (true) {
                     System.out.println("Ведите Сообщение.");
-                    scanner = new Scanner(System.in);
+                    Scanner scanner = new Scanner(System.in);
                     String message = scanner.nextLine();
 
                     output.write(message + "\n");
@@ -35,6 +33,8 @@ public class ClientApplication {
                     System.out.printf(responseFromServer);
                     System.out.println();
                     if (responseFromServer.equals("Спасибо, Досвидание")){
+                        break;
+                    } else if (responseFromServer.equals("Сервер выключается")){
                         break;
                     }
                 }

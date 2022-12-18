@@ -36,6 +36,8 @@ public class ClientApplication {
                     System.out.println();
                     if (responseFromServer.equals("Спасибо, Досвидание")){
                         break;
+                    } else if (responseFromServer.equals("Сервер выключается")){
+                        break;
                     }
                 }
             } finally {
